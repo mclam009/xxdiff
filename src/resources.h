@@ -583,6 +583,9 @@ public:
    // Compare fonts.
    static bool compareFonts( const QFont& f1, const QFont& f2 );
 
+   // Parse XLFD font description into a QFont object.
+   static void parseXLFD( const QString& xlfd, QFont& font );
+
 signals:
 
    /*----- member functions -----*/

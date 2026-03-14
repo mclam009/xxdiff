@@ -36,6 +36,7 @@
 #include <QApplication> // to get desktop
 #include <QRegularExpression>
 #include <QStyleFactory>
+#include <QStringList>
 
 #include <iostream>
 #include <string.h> // ::strcmp
@@ -119,6 +120,10 @@ void XxResources::initializeOriginalXdiff()
       "";
 #endif
    _maximize = false;
+
+   if ( qApp != 0 ) {
+      _fontApp = qApp->font();
+   }
 
    //---------------------------------------------------------------------------
 
@@ -463,7 +468,12 @@ bool XxResources::setAccelerator( XxAccel accel, const QString& val )
 //
 bool XxResources::setFontApp( const QString& val )
 {
-   _fontApp.fromString( val );
+   if ( val.startsWith( '-' ) ) {
+      parseXLFD( val, _fontApp );
+   }
+   else {
+      _fontApp.fromString( val );
+   }
    emit changed();
    return true; // never generates error.
 }
@@ -481,7 +491,12 @@ bool XxResources::setFontApp( const QFont& font )
 //
 bool XxResources::setFontText( const QString& val )
 {
-   _fontText.fromString( val );
+   if ( val.startsWith( '-' ) ) {
+      parseXLFD( val, _fontText );
+   }
+   else {
+      _fontText.fromString( val );
+   }
    emit changed();
    return true; // never generates error.
 }
@@ -493,6 +508,47 @@ bool XxResources::setFontText( const QFont& font )
    _fontText = font;
    emit changed();
    return true; // never generates error.
+}
+
+//------------------------------------------------------------------------------
+//
+void XxResources::parseXLFD( const QString& xlfd, QFont& font )
+{
+   QStringList fields = xlfd.split( '-' );
+   if ( fields.size() >= 14 ) {
+      // XLFD starts with - so fields[0] is empty.
+      // -foundry-family-weight-slant-sWidth-adstyl-pixelsize-pointsize-...
+      QString family    = fields[2];
+      QString weight    = fields[3];
+      QString slant     = fields[4];
+      QString pixelsize = fields[7];
+      QString pointsize = fields[8];
+
+      if ( !family.isEmpty() && family != "*" ) {
+         font.setFamily( family );
+      }
+      if ( !pointsize.isEmpty() && pointsize != "*" ) {
+         bool ok;
+         int ps = pointsize.toInt( &ok );
+         if ( ok && ps > 0 ) {
+            font.setPointSize( ps / 10 );
+         }
+      }
+      else if ( !pixelsize.isEmpty() && pixelsize != "*" ) {
+         bool ok;
+         int ps = pixelsize.toInt( &ok );
+         if ( ok && ps > 0 ) {
+            font.setPixelSize( ps );
+         }
+      }
+
+      if ( weight.compare( "bold", Qt::CaseInsensitive ) == 0 ) {
+         font.setBold( true );
+      }
+      if ( slant == "i" || slant == "o" ) {
+         font.setItalic( true );
+      }
+   }
 }
 
 //------------------------------------------------------------------------------
