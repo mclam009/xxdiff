@@ -476,6 +476,7 @@ private:
    // True if there is even a single byte of difference between the files.
    bool                    _isThereAnyDifference;
 
+   XxResources*            _defres;
    XxResources*            _resources;
 
    // Data from parsing the cmdline.
