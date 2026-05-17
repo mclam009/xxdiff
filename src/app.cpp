@@ -242,6 +242,9 @@ XxApp::XxApp( int& argc, char** argv, XxCmdline& cmdline ) :
 {
    _editProc[0] = _editProc[1] = _editProc[2] = NULL;
 
+   // Initialize default resource before doing anything else
+   _defres = new XxResources( _cmdline._originalXdiff );
+
    // Read in the resources and create resources object.
    _resources = buildResources();
 
@@ -3280,10 +3283,7 @@ void XxApp::saveOptions()
    {
       // Save to the stream the differences with the default resources.
       QTextStream outs( &outstr, QIODevice::WriteOnly );
-      std::unique_ptr<XxResources> defres(
-         new XxResources( _cmdline._originalXdiff )
-      );
-      XxResParser::genInitFile( *_resources, *defres, outs );
+      XxResParser::genInitFile( *_resources, *_defres, outs );
    }
    if ( outstr.isEmpty() ) {
       new XxSuicideMessageBox(
