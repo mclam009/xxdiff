@@ -99,8 +99,6 @@ int initOptions(
 
 /*----- static data members -----*/
 
-// Free simple switch characters: 'q', 'x', 'y'
-
 //
 // Generic options.
 //
@@ -278,6 +276,16 @@ XxCmdline::Option XxCmdline::_optionsDiff[] = {
      "When comparing directories, ignore files and subdirectories whose "
      "basenames match any pattern contained in file."
    },
+   { "include-git-dir", 0, false, 'q',
+     "When performing a recursive directory diff (-r/--recursive), also "
+     "descend into and compare '.git' directories. By default '.git' "
+     "directories are excluded."
+   },
+   { "exclude-dotfiles", 0, false, 'y',
+     "When comparing directories, ignore all files and subdirectories whose "
+     "basenames begin with a dot ('.'). Equivalent to passing "
+     "--exclude='.*' to diff(1)."
+   },
    { "args", 'A', true, 'A',
      "Pass on argument to the subordinate diff program."
    },
@@ -365,6 +373,7 @@ XxCmdline::XxCmdline() :
    _useTemporaryFiles( false ),
    _promptForFiles( false ),
    _jumpToFirstDiff( false ),
+   _includeGitDir( false ),
    _nbQtOptions( 0 ),
    _qtOptions()
 {
@@ -404,6 +413,7 @@ bool XxCmdline::parseCommandLine( const int argc, char* const* argv )
    // are stored in the _cmdlineResources.
 
    int optionIndex = 0;
+   bool dirDiffRecursive = false;
    const int nbTotalOptions =
       ( sizeof(_optionsGeneric) +
         sizeof(_optionsXxdiff) +
@@ -635,6 +645,7 @@ bool XxCmdline::parseCommandLine( const int argc, char* const* argv )
             QTextStream oss( &_cmdlineResources, QIODevice::WriteOnly | QIODevice::Append );
             oss << XxResParser::getBoolOptName( BOOL_DIRDIFF_RECURSIVE )
                 << ": true" << Qt::endl;
+            dirDiffRecursive = true;
          } break;
 
          case 'e': {
@@ -645,6 +656,14 @@ bool XxCmdline::parseCommandLine( const int argc, char* const* argv )
          case 'f': {
             _extraDiffArgs.append( " --exclude-from=" );
             _extraDiffArgs.append( QByteArray( optarg ) );
+         } break;
+
+         case 'q': {
+            _includeGitDir = true;
+         } break;
+
+         case 'y': {
+            _extraDiffArgs.append( " --exclude=.*" );
          } break;
 
          //
@@ -738,6 +757,12 @@ bool XxCmdline::parseCommandLine( const int argc, char* const* argv )
          default:
             throw XxUsageError( XX_EXC_PARAMS );
       }
+   }
+
+   // By default, exclude '.git' directories from recursive directory diffs,
+   // unless the user explicitly asked to include them.
+   if ( dirDiffRecursive && !_includeGitDir ) {
+      _extraDiffArgs.append( " --exclude=.git" );
    }
 
    // Count number of filenames specified on the cmdline.

@@ -144,6 +144,7 @@ private:
    bool          _useTemporaryFiles;
    bool          _promptForFiles;
    bool		 _jumpToFirstDiff;
+   bool          _includeGitDir;
 
    /*----- static data members -----*/
 
