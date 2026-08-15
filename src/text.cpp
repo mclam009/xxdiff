@@ -356,7 +356,6 @@ void XxText::paintEvent( QPaintEvent *e )
 
    const bool perHunkWsEnabled = resources.getBoolOpt( BOOL_IGNORE_PERHUNK_WS );
 
-   uint irenline = 0;
    XxDln icurline = topLine;
 
    int cursorY1 = -1;
@@ -694,8 +693,6 @@ void XxText::paintEvent( QPaintEvent *e )
       if ( _regionSelect[1] == curline ) {
          selRegY2 = y;
       }
-
-      ++irenline;
    }
    p.setBackgroundMode( Qt::TransparentMode );
 

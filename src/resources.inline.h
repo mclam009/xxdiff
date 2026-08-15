@@ -248,8 +248,8 @@ inline void XxResources::setFbColors(
    const char* forestr
 )
 {
-   _backColors[ color ].setNamedColor( backstr );
-   _foreColors[ color ].setNamedColor( forestr );
+   _backColors[ color ] = QColor::fromString( backstr );
+   _foreColors[ color ] = QColor::fromString( forestr );
    // Note: no need to emit changed(), this is a convenience method for the
    // inside.
 }

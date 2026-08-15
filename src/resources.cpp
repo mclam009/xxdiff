@@ -645,10 +645,10 @@ void XxResources::setColor(
 {
    if ( qApp != 0 ) { // protect setNamedColor() in case we have no display.
       if ( fore ) {
-         _foreColors[ int(colorType) ].setNamedColor( colorstr );
+         _foreColors[ int(colorType) ] = QColor::fromString( colorstr );
       }
       else {
-         _backColors[ int(colorType) ].setNamedColor( colorstr );
+         _backColors[ int(colorType) ] = QColor::fromString( colorstr );
       }
    }
    emit changed();

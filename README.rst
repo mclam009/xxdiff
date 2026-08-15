@@ -29,7 +29,7 @@ directories comparator and merge tool.  See there for full information about thi
 program, including documentation and more instructions.
 
 
-Features
+Featurenn/mac
 --------
 
 - Comparing **two** files, **three** files, or two **directories**
@@ -152,7 +152,8 @@ Runtime dependencies are:
 Portability
 -----------
 
-The Qt6 version of xxdiff was only tested on Fedora GNU/Linux and Ubuntu Linux.
+The Qt6 version of xxdiff was tested on Fedora GNU/Linux, Ubuntu Linux, and
+macOS.
 
 
 Copyright and License

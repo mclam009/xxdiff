@@ -29,7 +29,7 @@ Requirements
 
 - bison
 
-- Qt >=4.5
+- Qt5 or Qt6
 
 Compiling
 ---------

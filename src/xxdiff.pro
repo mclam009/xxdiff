@@ -126,6 +126,8 @@ linux: QMAKE_CXXFLAGS += -std=c++17
 # Max OS X (macx-g++ for command line build)
 
 macx {
+   QMAKE_MACOSX_DEPLOYMENT_TARGET = 15.0
+
    # Icon used for the application bundle
    ICON = xxdiff.icns
 
@@ -167,8 +169,12 @@ macx {
    QMAKE_EXTRA_TARGETS += macdeployqt dmg deploy bison23src bison23lnk resParser_lex_obj
    QMAKE_CFLAGS_RELEASE   -= -O2
    QMAKE_CXXFLAGS_RELEASE -= -O2
-   QMAKE_CFLAGS   += -mdynamic-no-pic -O3 -msse2 -msse3 -mssse3 -ftree-vectorize
-   QMAKE_CXXFLAGS += -mdynamic-no-pic -O3 -msse2 -msse3 -mssse3 -ftree-vectorize
+   QMAKE_CFLAGS   += -mdynamic-no-pic -O3 -ftree-vectorize
+   QMAKE_CXXFLAGS += -mdynamic-no-pic -O3 -ftree-vectorize
+   equals(QMAKE_HOST.arch, "x86_64") {
+      QMAKE_CFLAGS   += -msse2 -msse3 -mssse3
+      QMAKE_CXXFLAGS += -msse2 -msse3 -mssse3
+   }
 }
 
 #----------------------------------------

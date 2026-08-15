@@ -207,9 +207,9 @@ XxMergedWindow::XxMergedWindow(
    const XxResources& resources = app->getResources();
 
    QkMenu* menu = menuBar()->addMenu( "W&indow" );
-   menu->addAction( 
-      "Close", this, SLOT(hide()),
-      resources.getAccelerator( ACCEL_MERGED_CLOSE )
+   menu->addAction(
+      "Close", resources.getAccelerator( ACCEL_MERGED_CLOSE ),
+      this, SLOT(hide())
    );
 
    _frame = new XxMergedFrame( app, this );

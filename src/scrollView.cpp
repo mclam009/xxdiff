@@ -71,7 +71,7 @@ XxScrollView::XxScrollView(
       _app, SIGNAL(textSizeChanged()),
       this, SLOT(adjustScrollbars())
    );
-#ifndef Q_OS_OSX
+#ifndef Q_OS_MACOS
    lastWheelEvent = new QElapsedTimer;
    lastWheelEvent->start();
 #else
@@ -328,11 +328,11 @@ void XxScrollView::verticalScroll2( int value )
 //
 void XxScrollView::wheelEvent( QWheelEvent* e )
 {
-#ifndef Q_OS_OSX
+#ifndef Q_OS_MACOS
    qint64 deltaT = lastWheelEvent->elapsed();
 #endif
    if ( e->modifiers() & Qt::ControlModifier ) {
-#ifndef Q_OS_OSX
+#ifndef Q_OS_MACOS
       // Pressing the Control/Command key within 200ms of the previous "unmodified" wheelevent
       // is not allowed to cause text zooming; this prevents zooming due to inertial scrolling.
       if (lastWheelEventUnmodified && deltaT < 200) {
@@ -365,7 +365,7 @@ void XxScrollView::wheelEvent( QWheelEvent* e )
       lastWheelEventUnmodified = true;
       accidentalModifier = false;
    }
-#ifndef Q_OS_OSX
+#ifndef Q_OS_MACOS
    lastWheelEvent->start();
 #endif
 }

@@ -1144,36 +1144,36 @@ void XxApp::createMenus()
    // File menu
    QkMenu* fileMenu = menubar->addMenu( "&File" );
    fileMenu->addAction(
-      "Replace left file...", this, SLOT(openLeft()),
-      _resources->getAccelerator( ACCEL_OPEN_LEFT )
+      "Replace left file...", _resources->getAccelerator( ACCEL_OPEN_LEFT ),
+      this, SLOT(openLeft())
    );
    if ( _nbFiles == 3 ) {
       fileMenu->addAction(
-         "Replace middle file...", this, SLOT(openMiddle()),
-         _resources->getAccelerator( ACCEL_OPEN_MIDDLE )
+         "Replace middle file...", _resources->getAccelerator( ACCEL_OPEN_MIDDLE ),
+         this, SLOT(openMiddle())
       );
    }
    fileMenu->addAction(
-      "Replace right file...", this, SLOT(openRight()),
-      _resources->getAccelerator( ACCEL_OPEN_RIGHT )
+      "Replace right file...", _resources->getAccelerator( ACCEL_OPEN_RIGHT ),
+      this, SLOT(openRight())
    );
    fileMenu->addSeparator();
 
    QAction* ids[9];
    if ( _cmdline._unmerge == false ) {
       /*ids[0] = */fileMenu->addAction(
-         "Save as left", this, SLOT(saveAsLeft()),
-         _resources->getAccelerator( ACCEL_SAVE_AS_LEFT )
+         "Save as left", _resources->getAccelerator( ACCEL_SAVE_AS_LEFT ),
+         this, SLOT(saveAsLeft())
       );
       if ( _nbFiles == 3 ) {
          /*ids[1] = */fileMenu->addAction(
-            "Save as middle", this, SLOT(saveAsMiddle()),
-            _resources->getAccelerator( ACCEL_SAVE_AS_MIDDLE )
+            "Save as middle", _resources->getAccelerator( ACCEL_SAVE_AS_MIDDLE ),
+            this, SLOT(saveAsMiddle())
          );
       }
       ids[2] = fileMenu->addAction(
-         "Save as right", this, SLOT(saveAsRight()),
-         _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT )
+         "Save as right", _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT ),
+         this, SLOT(saveAsRight())
       );
       if ( _cmdline._single == true ) {
           ids[2]->setEnabled( false );
@@ -1181,79 +1181,79 @@ void XxApp::createMenus()
    }
    else {
       /*ids[0] = */fileMenu->addAction(
-         "Save as original", this, SLOT(saveAsLeft()),
-         _resources->getAccelerator( ACCEL_SAVE_AS_LEFT )
+         "Save as original", _resources->getAccelerator( ACCEL_SAVE_AS_LEFT ),
+         this, SLOT(saveAsLeft())
       );
    }
 
    fileMenu->addAction(
-      "Save as merged", this, SLOT(saveAsMerged()),
-      _resources->getAccelerator( ACCEL_SAVE_AS_MERGED )
+      "Save as merged", _resources->getAccelerator( ACCEL_SAVE_AS_MERGED ),
+      this, SLOT(saveAsMerged())
    );
    /*ids[3] = */fileMenu->addAction(
-      "Save as...", this, SLOT(saveAs()),
-      _resources->getAccelerator( ACCEL_SAVE_AS )
+      "Save as...", _resources->getAccelerator( ACCEL_SAVE_AS ),
+      this, SLOT(saveAs())
    );
    /*ids[4] = */fileMenu->addAction(
-      "Save selected only...", this, SLOT(saveSelectedOnly()),
-      _resources->getAccelerator( ACCEL_SAVE_SELECTED_ONLY )
+      "Save selected only...", _resources->getAccelerator( ACCEL_SAVE_SELECTED_ONLY ),
+      this, SLOT(saveSelectedOnly())
    );
 
    fileMenu->addSeparator();
 
    if ( _cmdline._unmerge == false ) {
       /*ids[6] = */fileMenu->addAction(
-         "Generate patch against left", this, SLOT(generatePatchFromLeft()),
-         _resources->getAccelerator( ACCEL_PATCH_FROM_LEFT )
+         "Generate patch against left", _resources->getAccelerator( ACCEL_PATCH_FROM_LEFT ),
+         this, SLOT(generatePatchFromLeft())
       );
       if ( _nbFiles == 3 ) {
          /*ids[7] = */fileMenu->addAction(
-            "Generate patch against middle", this,
-            SLOT(generatePatchFromMiddle()),
-            _resources->getAccelerator( ACCEL_PATCH_FROM_MIDDLE )
+            "Generate patch against middle",
+            _resources->getAccelerator( ACCEL_PATCH_FROM_MIDDLE ),
+            this, SLOT(generatePatchFromMiddle())
          );
       }
       ids[8] = fileMenu->addAction(
-         "Generate patch against right", this, SLOT(generatePatchFromRight()),
-         _resources->getAccelerator( ACCEL_PATCH_FROM_RIGHT )
+         "Generate patch against right", _resources->getAccelerator( ACCEL_PATCH_FROM_RIGHT ),
+         this, SLOT(generatePatchFromRight())
       );
 
    }
    else {
       /*ids[0] = */fileMenu->addAction(
-         "Generate patch against original", this, SLOT(generatePatchFromLeft()),
-         _resources->getAccelerator( ACCEL_PATCH_FROM_LEFT )
+         "Generate patch against original", _resources->getAccelerator( ACCEL_PATCH_FROM_LEFT ),
+         this, SLOT(generatePatchFromLeft())
       );
    }
 
    fileMenu->addSeparator();
 
    fileMenu->addAction(
-      "Redo diff", this, SLOT(redoDiff()),
-      _resources->getAccelerator( ACCEL_REDO_DIFF )
+      "Redo diff", _resources->getAccelerator( ACCEL_REDO_DIFF ),
+      this, SLOT(redoDiff())
    );
    fileMenu->addSeparator();
    fileMenu->addAction(
-      "Edit left file", this, SLOT(editLeft()),
-      _resources->getAccelerator( ACCEL_EDIT_LEFT )
+      "Edit left file", _resources->getAccelerator( ACCEL_EDIT_LEFT ),
+      this, SLOT(editLeft())
    );
    if ( _nbFiles == 3 ) {
       fileMenu->addAction(
-         "Edit middle file", this, SLOT(editMiddle()),
-         _resources->getAccelerator( ACCEL_EDIT_MIDDLE )
+         "Edit middle file", _resources->getAccelerator( ACCEL_EDIT_MIDDLE ),
+         this, SLOT(editMiddle())
       );
    }
    ids[5] = fileMenu->addAction(
-      "Edit right file", this, SLOT(editRight()),
-      _resources->getAccelerator( ACCEL_EDIT_RIGHT )
+      "Edit right file", _resources->getAccelerator( ACCEL_EDIT_RIGHT ),
+      this, SLOT(editRight())
    );
    if ( _cmdline._unmerge == true || _cmdline._single == true ) {
        ids[5]->setEnabled( false );
    }
 
    fileMenu->addAction(
-      "Save Options...", this, SLOT(saveOptions()),
-      _resources->getAccelerator( ACCEL_SAVE_OPTIONS )
+      "Save Options...", _resources->getAccelerator( ACCEL_SAVE_OPTIONS ),
+      this, SLOT(saveOptions())
    );
 
    fileMenu->addSeparator();
@@ -1277,16 +1277,16 @@ void XxApp::createMenus()
    else {
 
       fileMenu->addAction(
-         "Exit with ACCEPT", this, SLOT(quitAccept()),
-         _resources->getAccelerator( ACCEL_EXIT_ACCEPT )
+         "Exit with ACCEPT", _resources->getAccelerator( ACCEL_EXIT_ACCEPT ),
+         this, SLOT(quitAccept())
       );
       fileMenu->addAction(
-         "Exit with MERGED", this, SLOT(quitMerged()),
-         _resources->getAccelerator( ACCEL_EXIT_MERGED )
+         "Exit with MERGED", _resources->getAccelerator( ACCEL_EXIT_MERGED ),
+         this, SLOT(quitMerged())
       );
       fileMenu->addAction(
-         "Exit with REJECT", this, SLOT(quitReject()),
-         _resources->getAccelerator( ACCEL_EXIT_REJECT )
+         "Exit with REJECT", _resources->getAccelerator( ACCEL_EXIT_REJECT ),
+         this, SLOT(quitReject())
       );
    }
 
@@ -1295,25 +1295,25 @@ void XxApp::createMenus()
    // Edit menu
    QkMenu* editMenu = menubar->addMenu( "&Edit" );
    editMenu->addAction(
-      "Search...", this, SLOT(search()),
-      _resources->getAccelerator( ACCEL_SEARCH )
+      "Search...", _resources->getAccelerator( ACCEL_SEARCH ),
+      this, SLOT(search())
    );
    editMenu->addAction(
-      "Search forward", this, SLOT(searchForward()),
-      _resources->getAccelerator( ACCEL_SEARCH_FORWARD )
+      "Search forward", _resources->getAccelerator( ACCEL_SEARCH_FORWARD ),
+      this, SLOT(searchForward())
    );
    editMenu->addAction(
-      "Search backward", this, SLOT(searchBackward()),
-      _resources->getAccelerator( ACCEL_SEARCH_BACKWARD )
+      "Search backward", _resources->getAccelerator( ACCEL_SEARCH_BACKWARD ),
+      this, SLOT(searchBackward())
    );
    editMenu->addSeparator();
    editMenu->addAction(
-      "Beginning of file", this, SLOT(cursorTop()),
-      _resources->getAccelerator( ACCEL_CURSOR_TOP )
+      "Beginning of file", _resources->getAccelerator( ACCEL_CURSOR_TOP ),
+      this, SLOT(cursorTop())
    );
    editMenu->addAction(
-      "End of file", this, SLOT(cursorBottom()),
-      _resources->getAccelerator( ACCEL_CURSOR_BOTTOM )
+      "End of file", _resources->getAccelerator( ACCEL_CURSOR_BOTTOM ),
+      this, SLOT(cursorBottom())
    );
 
    //---------------------------------------------------------------------------
@@ -1322,47 +1322,47 @@ void XxApp::createMenus()
    QkMenu* viewMenu = menubar->addMenu( "V&iew" );
    if ( _filesAreDirectories == true ) {
       _menuactions[ ID_View_DiffFilesAtCursor ] = viewMenu->addAction(
-         "Diff files at cursor", this, SLOT(diffFilesAtCursor()),
-         _resources->getAccelerator( ACCEL_DIFF_FILES_AT_CURSOR )
+         "Diff files at cursor", _resources->getAccelerator( ACCEL_DIFF_FILES_AT_CURSOR ),
+         this, SLOT(diffFilesAtCursor())
       );
       _menuactions[ ID_View_NextAndDiffFiles ] = viewMenu->addAction(
-         "Next and diff files", this, SLOT(nextAndDiffFiles()),
-         _resources->getAccelerator( ACCEL_NEXT_AND_DIFF_FILES )
+         "Next and diff files", _resources->getAccelerator( ACCEL_NEXT_AND_DIFF_FILES ),
+         this, SLOT(nextAndDiffFiles())
       );
       _menuactions[ ID_View_CopyLeftToRight ] = viewMenu->addAction(
-         "Copy left file to right", this, SLOT(copyFileLeftToRight()),
-         _resources->getAccelerator( ACCEL_COPY_LEFT_TO_RIGHT )
+         "Copy left file to right", _resources->getAccelerator( ACCEL_COPY_LEFT_TO_RIGHT ),
+         this, SLOT(copyFileLeftToRight())
       );
       _menuactions[ ID_View_CopyRightToLeft ] = viewMenu->addAction(
-         "Copy right file to left", this, SLOT(copyFileRightToLeft()),
-         _resources->getAccelerator( ACCEL_COPY_RIGHT_TO_LEFT )
+         "Copy right file to left", _resources->getAccelerator( ACCEL_COPY_RIGHT_TO_LEFT ),
+         this, SLOT(copyFileRightToLeft())
       );
       _menuactions[ ID_View_RemoveLeft ] = viewMenu->addAction(
-         "Remove left file", this, SLOT(removeFileLeft()),
-         _resources->getAccelerator( ACCEL_REMOVE_LEFT )
+         "Remove left file", _resources->getAccelerator( ACCEL_REMOVE_LEFT ),
+         this, SLOT(removeFileLeft())
       );
       _menuactions[ ID_View_RemoveRight ] = viewMenu->addAction(
-         "Remove right file", this, SLOT(removeFileRight()),
-         _resources->getAccelerator( ACCEL_REMOVE_RIGHT )
+         "Remove right file", _resources->getAccelerator( ACCEL_REMOVE_RIGHT ),
+         this, SLOT(removeFileRight())
       );
       viewMenu->addSeparator();
    }
    viewMenu->addAction(
-      "Next difference", this, SLOT(nextDifference()),
-      _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE )
+      "Next difference", _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE ),
+      this, SLOT(nextDifference())
    );
    viewMenu->addAction(
-      "Previous difference", this, SLOT(previousDifference()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE )
+      "Previous difference", _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE ),
+      this, SLOT(previousDifference())
    );
    viewMenu->addSeparator();
    viewMenu->addAction(
-      "Next unselected", this, SLOT(nextUnselected()),
-      _resources->getAccelerator( ACCEL_NEXT_UNSELECTED )
+      "Next unselected", _resources->getAccelerator( ACCEL_NEXT_UNSELECTED ),
+      this, SLOT(nextUnselected())
    );
    viewMenu->addAction(
-      "Previous unselected", this, SLOT(previousUnselected()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED )
+      "Previous unselected", _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED ),
+      this, SLOT(previousUnselected())
    );
 
    //---------------------------------------------------------------------------
@@ -1371,239 +1371,239 @@ void XxApp::createMenus()
    _viewPopup[0] = new QkMenu;
    if ( _filesAreDirectories == true ) {
       _menuactions[ ID_View_DiffFilesAtCursor ] = _viewPopup[0]->addAction(
-         "Diff files at cursor", this, SLOT(diffFilesAtCursor()),
-         _resources->getAccelerator( ACCEL_DIFF_FILES_AT_CURSOR )
+         "Diff files at cursor", _resources->getAccelerator( ACCEL_DIFF_FILES_AT_CURSOR ),
+         this, SLOT(diffFilesAtCursor())
       );
       _menuactions[ ID_View_NextAndDiffFiles ] = _viewPopup[0]->addAction(
-         "Next and diff files", this, SLOT(nextAndDiffFiles()),
-         _resources->getAccelerator( ACCEL_NEXT_AND_DIFF_FILES )
+         "Next and diff files", _resources->getAccelerator( ACCEL_NEXT_AND_DIFF_FILES ),
+         this, SLOT(nextAndDiffFiles())
       );
       _menuactions[ ID_View_CopyLeftToRight ] = _viewPopup[0]->addAction(
-         "Copy left file to right", this, SLOT(copyFileLeftToRight()),
-         _resources->getAccelerator( ACCEL_COPY_LEFT_TO_RIGHT )
+         "Copy left file to right", _resources->getAccelerator( ACCEL_COPY_LEFT_TO_RIGHT ),
+         this, SLOT(copyFileLeftToRight())
       );
       _menuactions[ ID_View_CopyRightToLeft ] = _viewPopup[0]->addAction(
-         "Copy right file to left", this, SLOT(copyFileRightToLeft()),
-         _resources->getAccelerator( ACCEL_COPY_RIGHT_TO_LEFT )
+         "Copy right file to left", _resources->getAccelerator( ACCEL_COPY_RIGHT_TO_LEFT ),
+         this, SLOT(copyFileRightToLeft())
       );
       _menuactions[ ID_View_RemoveLeft ] = _viewPopup[0]->addAction(
-         "Remove left file", this, SLOT(removeFileLeft()),
-         _resources->getAccelerator( ACCEL_REMOVE_LEFT )
+         "Remove left file", _resources->getAccelerator( ACCEL_REMOVE_LEFT ),
+         this, SLOT(removeFileLeft())
       );
       _menuactions[ ID_View_RemoveRight ] = _viewPopup[0]->addAction(
-         "Remove right file", this, SLOT(removeFileRight()),
-         _resources->getAccelerator( ACCEL_REMOVE_RIGHT )
+         "Remove right file", _resources->getAccelerator( ACCEL_REMOVE_RIGHT ),
+         this, SLOT(removeFileRight())
       );
       _viewPopup[0]->addSeparator();
    }
 
       _viewPopup[0]->addAction(
-         "Next difference", this, SLOT(nextDifference()),
-         _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE )
+         "Next difference", _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE ),
+         this, SLOT(nextDifference())
       );
       _viewPopup[0]->addAction(
-         "Previous difference", this, SLOT(previousDifference()),
-         _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE )
+         "Previous difference", _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE ),
+         this, SLOT(previousDifference())
       );
       _viewPopup[0]->addSeparator();
       _viewPopup[0]->addAction(
-         "Next unselected", this, SLOT(nextUnselected()),
-         _resources->getAccelerator( ACCEL_NEXT_UNSELECTED )
+         "Next unselected", _resources->getAccelerator( ACCEL_NEXT_UNSELECTED ),
+         this, SLOT(nextUnselected())
       );
       _viewPopup[0]->addAction(
-         "Previous unselected", this, SLOT(previousUnselected()),
-         _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED )
+         "Previous unselected", _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED ),
+         this, SLOT(previousUnselected())
       );
 
    // Right click View menu for the left file
    _viewPopup[1] = new QkMenu;
    _viewPopup[1]->addAction(
-      "Replace left file...", this, SLOT(openLeft()),
-      _resources->getAccelerator( ACCEL_OPEN_LEFT )
+      "Replace left file...", _resources->getAccelerator( ACCEL_OPEN_LEFT ),
+      this, SLOT(openLeft())
    );
    _viewPopup[1]->addAction(
-      "Edit left file", this, SLOT(editLeft()),
-      _resources->getAccelerator( ACCEL_EDIT_LEFT )
+      "Edit left file", _resources->getAccelerator( ACCEL_EDIT_LEFT ),
+      this, SLOT(editLeft())
    );
    _viewPopup[1]->addAction(
-         "Save as left", this, SLOT(saveAsLeft()),
-         _resources->getAccelerator( ACCEL_SAVE_AS_LEFT )
+         "Save as left", _resources->getAccelerator( ACCEL_SAVE_AS_LEFT ),
+         this, SLOT(saveAsLeft())
       );
    _viewPopup[1]->addSeparator();
 
    _viewPopup[1]->addAction(
-      "Next difference", this, SLOT(nextDifference()),
-      _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE )
+      "Next difference", _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE ),
+      this, SLOT(nextDifference())
    );
    _viewPopup[1]->addAction(
-      "Previous difference", this, SLOT(previousDifference()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE )
+      "Previous difference", _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE ),
+      this, SLOT(previousDifference())
    );
    _viewPopup[1]->addSeparator();
    _viewPopup[1]->addAction(
-      "Next unselected", this, SLOT(nextUnselected()),
-      _resources->getAccelerator( ACCEL_NEXT_UNSELECTED )
+      "Next unselected", _resources->getAccelerator( ACCEL_NEXT_UNSELECTED ),
+      this, SLOT(nextUnselected())
    );
    _viewPopup[1]->addAction(
-      "Previous unselected", this, SLOT(previousUnselected()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED )
+      "Previous unselected", _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED ),
+      this, SLOT(previousUnselected())
    );
    _viewPopup[1]->addSeparator();
 
    _viewPopup[1]->addAction(
-      "Select left line", this, SLOT(selectLineLeft()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT )
+      "Select left line", _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT ),
+      this, SLOT(selectLineLeft())
    );
    if ( _nbFiles == 3 ) {
       _viewPopup[1]->addAction(
-         "Select middle line", this, SLOT(selectLineMiddle()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE )
+         "Select middle line", _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE ),
+         this, SLOT(selectLineMiddle())
       );
    }
    _viewPopup[1]->addAction(
-      "Select right line", this, SLOT(selectLineRight()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT )
+      "Select right line", _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT ),
+      this, SLOT(selectLineRight())
    );
    _viewPopup[1]->addAction(
-      "Select neither", this, SLOT(selectLineNeither()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER )
+      "Select neither", _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER ),
+      this, SLOT(selectLineNeither())
    );
    _viewPopup[1]->addAction(
-      "Unselect", this, SLOT(selectLineUnselect()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT)
+      "Unselect", _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT),
+      this, SLOT(selectLineUnselect())
    );
 
    // Right click View menu for the middle or right file
    _viewPopup[2] = new QkMenu;
    if ( _nbFiles == 3 ) {
      _viewPopup[2]->addAction(
-        "Replace middle file...", this, SLOT(openMiddle()),
-        _resources->getAccelerator( ACCEL_OPEN_MIDDLE )
+        "Replace middle file...", _resources->getAccelerator( ACCEL_OPEN_MIDDLE ),
+        this, SLOT(openMiddle())
      );
      _viewPopup[2]->addAction(
-        "Edit middle file", this, SLOT(editMiddle()),
-        _resources->getAccelerator( ACCEL_EDIT_MIDDLE )
+        "Edit middle file", _resources->getAccelerator( ACCEL_EDIT_MIDDLE ),
+        this, SLOT(editMiddle())
      );
      _viewPopup[2]->addAction(
-        "Save as middle", this, SLOT(saveAsMiddle()),
-        _resources->getAccelerator( ACCEL_SAVE_AS_MIDDLE )
+        "Save as middle", _resources->getAccelerator( ACCEL_SAVE_AS_MIDDLE ),
+        this, SLOT(saveAsMiddle())
      );
    }
    else
    {
      _viewPopup[2]->addAction(
-        "Replace right file...", this, SLOT(openRight()),
-        _resources->getAccelerator( ACCEL_OPEN_RIGHT )
+        "Replace right file...", _resources->getAccelerator( ACCEL_OPEN_RIGHT ),
+        this, SLOT(openRight())
      );
      _viewPopup[2]->addAction(
-        "Edit right file", this, SLOT(editRight()),
-        _resources->getAccelerator( ACCEL_EDIT_RIGHT )
+        "Edit right file", _resources->getAccelerator( ACCEL_EDIT_RIGHT ),
+        this, SLOT(editRight())
      );
      _viewPopup[2]->addAction(
-        "Save as right", this, SLOT(saveAsRight()),
-        _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT )
+        "Save as right", _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT ),
+        this, SLOT(saveAsRight())
      );
    }
    _viewPopup[2]->addSeparator();
 
    _viewPopup[2]->addAction(
-      "Next difference", this, SLOT(nextDifference()),
-      _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE )
+      "Next difference", _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE ),
+      this, SLOT(nextDifference())
    );
    _viewPopup[2]->addAction(
-      "Previous difference", this, SLOT(previousDifference()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE )
+      "Previous difference", _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE ),
+      this, SLOT(previousDifference())
    );
    _viewPopup[2]->addSeparator();
    _viewPopup[2]->addAction(
-      "Next unselected", this, SLOT(nextUnselected()),
-      _resources->getAccelerator( ACCEL_NEXT_UNSELECTED )
+      "Next unselected", _resources->getAccelerator( ACCEL_NEXT_UNSELECTED ),
+      this, SLOT(nextUnselected())
    );
    _viewPopup[2]->addAction(
-      "Previous unselected", this, SLOT(previousUnselected()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED )
+      "Previous unselected", _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED ),
+      this, SLOT(previousUnselected())
    );
    _viewPopup[2]->addSeparator();
 
    _viewPopup[2]->addAction(
-      "Select left line", this, SLOT(selectLineLeft()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT )
+      "Select left line", _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT ),
+      this, SLOT(selectLineLeft())
    );
    if ( _nbFiles == 3 ) {
       _viewPopup[2]->addAction(
-         "Select middle line", this, SLOT(selectLineMiddle()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE )
+         "Select middle line", _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE ),
+         this, SLOT(selectLineMiddle())
       );
    }
    _viewPopup[2]->addAction(
-      "Select right line", this, SLOT(selectLineRight()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT )
+      "Select right line", _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT ),
+      this, SLOT(selectLineRight())
    );
    _viewPopup[2]->addAction(
-      "Select neither", this, SLOT(selectLineNeither()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER )
+      "Select neither", _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER ),
+      this, SLOT(selectLineNeither())
    );
    _viewPopup[2]->addAction(
-      "Unselect", this, SLOT(selectLineUnselect()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT)
+      "Unselect", _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT),
+      this, SLOT(selectLineUnselect())
    );
 
    // Right click View menu for right file
    _viewPopup[3] = new QkMenu;
    _viewPopup[3]->addAction(
-      "Replace right file...", this, SLOT(openRight()),
-      _resources->getAccelerator( ACCEL_OPEN_RIGHT )
+      "Replace right file...", _resources->getAccelerator( ACCEL_OPEN_RIGHT ),
+      this, SLOT(openRight())
    );
    _viewPopup[3]->addAction(
-      "Edit right file", this, SLOT(editRight()),
-      _resources->getAccelerator( ACCEL_EDIT_RIGHT )
+      "Edit right file", _resources->getAccelerator( ACCEL_EDIT_RIGHT ),
+      this, SLOT(editRight())
    );
    _viewPopup[3]->addAction(
-      "Save as right", this, SLOT(saveAsRight()),
-      _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT )
-   );
-   _viewPopup[3]->addSeparator();
-
-   _viewPopup[3]->addAction(
-      "Next difference", this, SLOT(nextDifference()),
-      _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE )
-   );
-   _viewPopup[3]->addAction(
-      "Previous difference", this, SLOT(previousDifference()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE )
-   );
-   _viewPopup[3]->addSeparator();
-   _viewPopup[3]->addAction(
-      "Next unselected", this, SLOT(nextUnselected()),
-      _resources->getAccelerator( ACCEL_NEXT_UNSELECTED )
-   );
-   _viewPopup[3]->addAction(
-      "Previous unselected", this, SLOT(previousUnselected()),
-      _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED )
+      "Save as right", _resources->getAccelerator( ACCEL_SAVE_AS_RIGHT ),
+      this, SLOT(saveAsRight())
    );
    _viewPopup[3]->addSeparator();
 
    _viewPopup[3]->addAction(
-      "Select left line", this, SLOT(selectLineLeft()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT )
+      "Next difference", _resources->getAccelerator( ACCEL_NEXT_DIFFERENCE ),
+      this, SLOT(nextDifference())
+   );
+   _viewPopup[3]->addAction(
+      "Previous difference", _resources->getAccelerator( ACCEL_PREVIOUS_DIFFERENCE ),
+      this, SLOT(previousDifference())
+   );
+   _viewPopup[3]->addSeparator();
+   _viewPopup[3]->addAction(
+      "Next unselected", _resources->getAccelerator( ACCEL_NEXT_UNSELECTED ),
+      this, SLOT(nextUnselected())
+   );
+   _viewPopup[3]->addAction(
+      "Previous unselected", _resources->getAccelerator( ACCEL_PREVIOUS_UNSELECTED ),
+      this, SLOT(previousUnselected())
+   );
+   _viewPopup[3]->addSeparator();
+
+   _viewPopup[3]->addAction(
+      "Select left line", _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT ),
+      this, SLOT(selectLineLeft())
    );
    if ( _nbFiles == 3 ) {
       _viewPopup[3]->addAction(
-         "Select middle line", this, SLOT(selectLineMiddle()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE )
+         "Select middle line", _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE ),
+         this, SLOT(selectLineMiddle())
       );
    }
    _viewPopup[3]->addAction(
-      "Select right line", this, SLOT(selectLineRight()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT )
+      "Select right line", _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT ),
+      this, SLOT(selectLineRight())
    );
    _viewPopup[3]->addAction(
-      "Select neither", this, SLOT(selectLineNeither()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER )
+      "Select neither", _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER ),
+      this, SLOT(selectLineNeither())
    );
    _viewPopup[3]->addAction(
-      "Unselect", this, SLOT(selectLineUnselect()),
-      _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT)
+      "Unselect", _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT),
+      this, SLOT(selectLineUnselect())
    );
 
    //---------------------------------------------------------------------------
@@ -1613,60 +1613,65 @@ void XxApp::createMenus()
       // Global menu
       QkMenu* globalMenu = menubar->addMenu( "&Global" );
       globalMenu->addAction(
-         "Select left", this, SLOT(selectGlobalLeft()),
-         _resources->getAccelerator( ACCEL_SELECT_GLOBAL_LEFT )
+         "Select left", _resources->getAccelerator( ACCEL_SELECT_GLOBAL_LEFT ),
+         this, SLOT(selectGlobalLeft())
       );
       if ( _nbFiles == 3 ) {
          globalMenu->addAction(
-            "Select middle", this, SLOT(selectGlobalMiddle()),
-            _resources->getAccelerator( ACCEL_SELECT_GLOBAL_MIDDLE )
+            "Select middle", _resources->getAccelerator( ACCEL_SELECT_GLOBAL_MIDDLE ),
+            this, SLOT(selectGlobalMiddle())
          );
       }
       globalMenu->addAction(
-         "Select right", this, SLOT(selectGlobalRight()),
-         _resources->getAccelerator( ACCEL_SELECT_GLOBAL_RIGHT )
+         "Select right", _resources->getAccelerator( ACCEL_SELECT_GLOBAL_RIGHT ),
+         this, SLOT(selectGlobalRight())
       );
       globalMenu->addAction(
-         "Select neither", this, SLOT(selectGlobalNeither()),
-         _resources->getAccelerator( ACCEL_SELECT_GLOBAL_NEITHER )
+         "Select neither", _resources->getAccelerator( ACCEL_SELECT_GLOBAL_NEITHER ),
+         this, SLOT(selectGlobalNeither())
       );
       globalMenu->addAction(
-         "Unselect", this, SLOT(selectGlobalUnselect()),
-         _resources->getAccelerator( ACCEL_SELECT_GLOBAL_UNSELECT)
+         "Unselect", _resources->getAccelerator( ACCEL_SELECT_GLOBAL_UNSELECT),
+         this, SLOT(selectGlobalUnselect())
       );
       globalMenu->addSeparator();
       globalMenu->addAction(
-         "Select unselected left", this, SLOT(selectGlobalUnselectedLeft()),
+         "Select unselected left",
          _resources->getAccelerator(
             ACCEL_SELECT_GLOBAL_UNSELECTED_LEFT
-         )
+         ),
+         this, SLOT(selectGlobalUnselectedLeft())
       );
       if ( _nbFiles == 3 ) {
          globalMenu->addAction(
-            "Select unselected middle", this, SLOT(selectGlobalUnselectedMiddle()),
+            "Select unselected middle",
             _resources->getAccelerator(
                ACCEL_SELECT_GLOBAL_UNSELECTED_MIDDLE
-            )
+            ),
+            this, SLOT(selectGlobalUnselectedMiddle())
          );
       }
       globalMenu->addAction(
-         "Select unselected right", this, SLOT(selectGlobalUnselectedRight()),
+         "Select unselected right",
          _resources->getAccelerator(
             ACCEL_SELECT_GLOBAL_UNSELECTED_RIGHT
-         )
+         ),
+         this, SLOT(selectGlobalUnselectedRight())
       );
       globalMenu->addAction(
-         "Select unselected neither", this, SLOT(selectGlobalUnselectedNeither()),
+         "Select unselected neither",
          _resources->getAccelerator(
             ACCEL_SELECT_GLOBAL_UNSELECTED_NEITHER
-         )
+         ),
+         this, SLOT(selectGlobalUnselectedNeither())
       );
       globalMenu->addSeparator();
       globalMenu->addAction(
-         "Merge", this, SLOT(selectGlobalMerge()),
+         "Merge",
          _resources->getAccelerator(
             ACCEL_SELECT_GLOBAL_MERGE
-         )
+         ),
+         this, SLOT(selectGlobalMerge())
       );
 
       //---------------------------------------------------------------------------
@@ -1674,64 +1679,65 @@ void XxApp::createMenus()
       // Region menu
       QkMenu* regionMenu = menubar->addMenu( "&Region" );
       regionMenu->addAction(
-         "Select left", this, SLOT(selectRegionLeft()),
-         _resources->getAccelerator( ACCEL_SELECT_REGION_LEFT )
+         "Select left", _resources->getAccelerator( ACCEL_SELECT_REGION_LEFT ),
+         this, SLOT(selectRegionLeft())
       );
       if ( _nbFiles == 3 ) {
          regionMenu->addAction(
-            "Select middle", this, SLOT(selectRegionMiddle()),
-            _resources->getAccelerator( ACCEL_SELECT_REGION_MIDDLE )
+            "Select middle", _resources->getAccelerator( ACCEL_SELECT_REGION_MIDDLE ),
+            this, SLOT(selectRegionMiddle())
          );
       }
       regionMenu->addAction(
-         "Select right", this, SLOT(selectRegionRight()),
-         _resources->getAccelerator( ACCEL_SELECT_REGION_RIGHT )
+         "Select right", _resources->getAccelerator( ACCEL_SELECT_REGION_RIGHT ),
+         this, SLOT(selectRegionRight())
       );
       regionMenu->addAction(
-         "Select neither", this, SLOT(selectRegionNeither()),
-         _resources->getAccelerator( ACCEL_SELECT_REGION_NEITHER )
+         "Select neither", _resources->getAccelerator( ACCEL_SELECT_REGION_NEITHER ),
+         this, SLOT(selectRegionNeither())
       );
       regionMenu->addAction(
-         "Unselect", this, SLOT(selectRegionUnselect()),
-         _resources->getAccelerator( ACCEL_SELECT_REGION_UNSELECT)
+         "Unselect", _resources->getAccelerator( ACCEL_SELECT_REGION_UNSELECT),
+         this, SLOT(selectRegionUnselect())
       );
       regionMenu->addSeparator();
       regionMenu->addAction(
-         "Select left and next", this,
-         SLOT(selectRegionLeftAndNext()),
+         "Select left and next",
          _resources->getAccelerator(
             ACCEL_SELECT_REGION_LEFT_AND_NEXT
-         )
+         ),
+         this, SLOT(selectRegionLeftAndNext())
       );
       if ( _nbFiles == 3 ) {
          regionMenu->addAction(
-            "Select middle and next", this,
-            SLOT(selectRegionMiddleAndNext()),
+            "Select middle and next",
             _resources->getAccelerator(
                ACCEL_SELECT_REGION_MIDDLE_AND_NEXT
-            )
+            ),
+            this, SLOT(selectRegionMiddleAndNext())
          );
       }
       regionMenu->addAction(
-         "Select right and next", this,
-         SLOT(selectRegionRightAndNext()),
+         "Select right and next",
          _resources->getAccelerator(
             ACCEL_SELECT_REGION_RIGHT_AND_NEXT
-         )
+         ),
+         this, SLOT(selectRegionRightAndNext())
       );
       regionMenu->addAction(
-         "Select neither and next", this,
-         SLOT(selectRegionNeitherAndNext()),
+         "Select neither and next",
          _resources->getAccelerator(
             ACCEL_SELECT_REGION_NEITHER_AND_NEXT
-         )
+         ),
+         this, SLOT(selectRegionNeitherAndNext())
       );
       regionMenu->addSeparator();
       regionMenu->addAction(
-         "Split/swap/join", this, SLOT(regionSplitSwapJoin()),
+         "Split/swap/join",
          _resources->getAccelerator(
             ACCEL_SELECT_REGION_SPLIT_SWAP_JOIN
-         )
+         ),
+         this, SLOT(regionSplitSwapJoin())
       );
 
       //---------------------------------------------------------------------------
@@ -1739,26 +1745,26 @@ void XxApp::createMenus()
       // Line menu
       QkMenu* lineMenu = menubar->addMenu( "Li&ne" );
       lineMenu->addAction(
-         "Select left", this, SLOT(selectLineLeft()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT )
+         "Select left", _resources->getAccelerator( ACCEL_SELECT_LINE_LEFT ),
+         this, SLOT(selectLineLeft())
       );
       if ( _nbFiles == 3 ) {
          lineMenu->addAction(
-            "Select middle", this, SLOT(selectLineMiddle()),
-            _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE )
+            "Select middle", _resources->getAccelerator( ACCEL_SELECT_LINE_MIDDLE ),
+            this, SLOT(selectLineMiddle())
          );
       }
       lineMenu->addAction(
-         "Select right", this, SLOT(selectLineRight()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT )
+         "Select right", _resources->getAccelerator( ACCEL_SELECT_LINE_RIGHT ),
+         this, SLOT(selectLineRight())
       );
       lineMenu->addAction(
-         "Select neither", this, SLOT(selectLineNeither()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER )
+         "Select neither", _resources->getAccelerator( ACCEL_SELECT_LINE_NEITHER ),
+         this, SLOT(selectLineNeither())
       );
       lineMenu->addAction(
-         "Unselect", this, SLOT(selectLineUnselect()),
-         _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT)
+         "Unselect", _resources->getAccelerator( ACCEL_SELECT_LINE_UNSELECT),
+         this, SLOT(selectLineUnselect())
       );
 
   } //  _filesAreDirectories == false
@@ -1769,8 +1775,8 @@ void XxApp::createMenus()
    _optionsMenu = menubar->addMenu( "O&ptions" );
 
    _optionsMenu->addAction(
-      "Edit diff options...", this, SLOT(editDiffOptions()),
-      _resources->getAccelerator( ACCEL_EDIT_DIFF_OPTIONS )
+      "Edit diff options...", _resources->getAccelerator( ACCEL_EDIT_DIFF_OPTIONS ),
+      this, SLOT(editDiffOptions())
    );
 
    if ( _filesAreDirectories == false ) {
@@ -1781,46 +1787,46 @@ void XxApp::createMenus()
          _optionsMenu->addSeparator();
 
          _menuactions[ ID_ToggleIgnoreTrailing ] = _optionsMenu->addAction(
-            "Ignore trailing blanks", this, SLOT(ignoreTrailing()),
-            _resources->getAccelerator( ACCEL_IGNORE_TRAILING )
+            "Ignore trailing blanks", _resources->getAccelerator( ACCEL_IGNORE_TRAILING ),
+            this, SLOT(ignoreTrailing())
          );
          _menuactions[ ID_ToggleIgnoreTrailing ]->setCheckable( true );
 
          _menuactions[ ID_ToggleIgnoreWhitespace ] = _optionsMenu->addAction(
-            "Ignore whitespace", this, SLOT(ignoreWhitespace()),
-            _resources->getAccelerator( ACCEL_IGNORE_WHITESPACE )
+            "Ignore whitespace", _resources->getAccelerator( ACCEL_IGNORE_WHITESPACE ),
+            this, SLOT(ignoreWhitespace())
          );
          _menuactions[ ID_ToggleIgnoreWhitespace ]->setCheckable( true );
 
          _menuactions[ ID_ToggleIgnoreCase ] = _optionsMenu->addAction(
-            "Ignore case", this, SLOT(ignoreCase()),
-            _resources->getAccelerator( ACCEL_IGNORE_CASE )
+            "Ignore case", _resources->getAccelerator( ACCEL_IGNORE_CASE ),
+            this, SLOT(ignoreCase())
          );
          _menuactions[ ID_ToggleIgnoreCase ]->setCheckable( true );
 
          _menuactions[ ID_ToggleIgnoreBlankLines ] = _optionsMenu->addAction(
-            "Ignore blank lines", this, SLOT(ignoreBlankLines()),
-            _resources->getAccelerator( ACCEL_IGNORE_BLANK_LINES )
+            "Ignore blank lines", _resources->getAccelerator( ACCEL_IGNORE_BLANK_LINES ),
+            this, SLOT(ignoreBlankLines())
          );
          _menuactions[ ID_ToggleIgnoreBlankLines ]->setCheckable( true );
 
          _optionsMenu->addSeparator();
 
          _menuactions[ ID_ToggleQualityNormal ] = _optionsMenu->addAction(
-            "Quality: normal", this, SLOT(qualityNormal()),
-            _resources->getAccelerator( ACCEL_QUALITY_NORMAL )
+            "Quality: normal", _resources->getAccelerator( ACCEL_QUALITY_NORMAL ),
+            this, SLOT(qualityNormal())
          );
          _menuactions[ ID_ToggleQualityNormal ]->setCheckable( true );
 
          _menuactions[ ID_ToggleQualityFastest ] = _optionsMenu->addAction(
-            "Quality: fastest", this, SLOT(qualityFastest()),
-            _resources->getAccelerator( ACCEL_QUALITY_FASTEST )
+            "Quality: fastest", _resources->getAccelerator( ACCEL_QUALITY_FASTEST ),
+            this, SLOT(qualityFastest())
          );
          _menuactions[ ID_ToggleQualityFastest ]->setCheckable( true );
 
          _menuactions[ ID_ToggleQualityHighest ] = _optionsMenu->addAction(
-            "Quality: highest", this, SLOT(qualityHighest()),
-            _resources->getAccelerator( ACCEL_QUALITY_HIGHEST )
+            "Quality: highest", _resources->getAccelerator( ACCEL_QUALITY_HIGHEST ),
+            this, SLOT(qualityHighest())
          );
          _menuactions[ ID_ToggleQualityHighest ]->setCheckable( true );
       }
@@ -1829,10 +1835,11 @@ void XxApp::createMenus()
       _optionsMenu->addSeparator();
 
       _menuactions[ ID_ToggleDirDiffsRecursive ] = _optionsMenu->addAction(
-         "Recursive", this, SLOT(dirDiffRecursive()),
+         "Recursive",
          _resources->getAccelerator(
             ACCEL_DIRDIFF_RECURSIVE
-         )
+         ),
+         this, SLOT(dirDiffRecursive())
       );
       _menuactions[ ID_ToggleDirDiffsRecursive ]->setCheckable( true );
    }
@@ -1842,8 +1849,8 @@ void XxApp::createMenus()
    _displayMenu = menubar->addMenu( "&Display" );
 
    _displayMenu->addAction(
-      "Edit display options...", this, SLOT(editDisplayOptions()),
-      _resources->getAccelerator( ACCEL_EDIT_DISPLAY_OPTIONS )
+      "Edit display options...", _resources->getAccelerator( ACCEL_EDIT_DISPLAY_OPTIONS ),
+      this, SLOT(editDisplayOptions())
    );
    _displayMenu->addSeparator();
 
@@ -1854,61 +1861,62 @@ void XxApp::createMenus()
          _hordiffMenu = _displayMenu->addMenu( "Horizontal diffs" );
 
          _menuactions[ ID_Hordiff_None ] = _hordiffMenu->addAction(
-            "None", this, SLOT(hordiffTypeNone()),
-            _resources->getAccelerator( ACCEL_HORDIFF_NONE )
+            "None", _resources->getAccelerator( ACCEL_HORDIFF_NONE ),
+            this, SLOT(hordiffTypeNone())
          );
          _menuactions[ ID_Hordiff_None ]->setCheckable( true );
 
          _menuactions[ ID_Hordiff_Single ] = _hordiffMenu->addAction(
-            "Single", this, SLOT(hordiffTypeSingle()),
-            _resources->getAccelerator( ACCEL_HORDIFF_SINGLE )
+            "Single", _resources->getAccelerator( ACCEL_HORDIFF_SINGLE ),
+            this, SLOT(hordiffTypeSingle())
          );
          _menuactions[ ID_Hordiff_Single ]->setCheckable( true );
 
          _menuactions[ ID_Hordiff_Multiple ] = _hordiffMenu->addAction(
-            "Multiple", this, SLOT(hordiffTypeMultiple()),
-            _resources->getAccelerator( ACCEL_HORDIFF_MULTIPLE )
+            "Multiple", _resources->getAccelerator( ACCEL_HORDIFF_MULTIPLE ),
+            this, SLOT(hordiffTypeMultiple())
          );
          _menuactions[ ID_Hordiff_Multiple ]->setCheckable( true );
       }
 
       _menuactions[ ID_ToggleIgnoreHorizontalWs ] = _displayMenu->addAction(
-         "Ignore horizontal whitespace", this, SLOT(toggleIgnoreHorizontalWs()),
-         _resources->getAccelerator( ACCEL_TOGGLE_IGNORE_HORIZONTAL_WS )
+         "Ignore horizontal whitespace", _resources->getAccelerator( ACCEL_TOGGLE_IGNORE_HORIZONTAL_WS ),
+         this, SLOT(toggleIgnoreHorizontalWs())
       );
       _menuactions[ ID_ToggleIgnoreHorizontalWs ]->setCheckable( true );
 
       _menuactions[ ID_ToggleIgnorePerHunkWs ] = _displayMenu->addAction(
-         "Ignore per-hunk whitespace", this, SLOT(toggleIgnorePerHunkWs()),
-         _resources->getAccelerator( ACCEL_TOGGLE_IGNORE_PERHUNK_WS )
+         "Ignore per-hunk whitespace", _resources->getAccelerator( ACCEL_TOGGLE_IGNORE_PERHUNK_WS ),
+         this, SLOT(toggleIgnorePerHunkWs())
       );
       _menuactions[ ID_ToggleIgnorePerHunkWs ]->setCheckable( true );
 
       _menuactions[ ID_ToggleHideCarriageReturns ] = _displayMenu->addAction(
-         "Hide carriage returns", this, SLOT(hideCarriageReturns()),
-         _resources->getAccelerator( ACCEL_HIDE_CR )
+         "Hide carriage returns", _resources->getAccelerator( ACCEL_HIDE_CR ),
+         this, SLOT(hideCarriageReturns())
       );
       _menuactions[ ID_ToggleHideCarriageReturns ]->setCheckable( true );
 
       _menuactions[ ID_ToggleVerticalLine ] = _displayMenu->addAction(
-         "Draw vertical line", this, SLOT(toggleVerticalLine()),
-         _resources->getAccelerator( ACCEL_TOGGLE_VERTICAL_LINE )
+         "Draw vertical line", _resources->getAccelerator( ACCEL_TOGGLE_VERTICAL_LINE ),
+         this, SLOT(toggleVerticalLine())
       );
       _menuactions[ ID_ToggleVerticalLine ]->setCheckable( true );
 
       _menuactions[ ID_ToggleHorizNullMarkers ] = _displayMenu->addAction(
-         "Horizontal Null Markers", this, SLOT(toggleHorizNullMarkers()),
-         _resources->getAccelerator( ACCEL_TOGGLE_NULL_HORIZONTAL_MARKERS )
+         "Horizontal Null Markers", _resources->getAccelerator( ACCEL_TOGGLE_NULL_HORIZONTAL_MARKERS ),
+         this, SLOT(toggleHorizNullMarkers())
       );
       _menuactions[ ID_ToggleHorizNullMarkers ]->setCheckable( true );
 
    }
    else {
       _menuactions[ ID_ToggleDirDiffsIgnoreFileChanges ] = _displayMenu->addAction(
-         "Ignore file changes", this, SLOT(ignoreFileChanges()),
+         "Ignore file changes",
          _resources->getAccelerator(
             ACCEL_DIRDIFF_IGNORE_FILE_CHANGES
-         )
+         ),
+         this, SLOT(ignoreFileChanges())
       );
       _menuactions[ ID_ToggleDirDiffsIgnoreFileChanges ]->setCheckable( true );
    }
@@ -1916,11 +1924,11 @@ void XxApp::createMenus()
    _displayMenu->addSeparator();
 
    _menuactions[ ID_ToggleFormatClipboardText ] = _displayMenu->addAction(
-      "Format clipboard text", this,
-      SLOT(toggleFormatClipboardText()),
+      "Format clipboard text",
       _resources->getAccelerator(
          ACCEL_TOGGLE_FORMAT_CLIPBOARD_TEXT
-      )
+      ),
+      this, SLOT(toggleFormatClipboardText())
    );
    _menuactions[ ID_ToggleFormatClipboardText ]->setCheckable( true );
 
@@ -1929,28 +1937,28 @@ void XxApp::createMenus()
       _displayMenu->addSeparator();
 
       _menuactions[ ID_TabsAtThree ] = _displayMenu->addAction(
-         "Tabs at 3", this, SLOT(tabsAt3()),
-         _resources->getAccelerator( ACCEL_TABS_AT_3 )
+         "Tabs at 3", _resources->getAccelerator( ACCEL_TABS_AT_3 ),
+         this, SLOT(tabsAt3())
       );
       _menuactions[ ID_TabsAtThree ]->setCheckable( true );
 
       _menuactions[ ID_TabsAtFour ] = _displayMenu->addAction(
-         "Tabs at 4", this, SLOT(tabsAt4()),
-         _resources->getAccelerator( ACCEL_TABS_AT_4 )
+         "Tabs at 4", _resources->getAccelerator( ACCEL_TABS_AT_4 ),
+         this, SLOT(tabsAt4())
       );
       _menuactions[ ID_TabsAtFour ]->setCheckable( true );
 
       _menuactions[ ID_TabsAtEight ] = _displayMenu->addAction(
-         "Tabs at 8", this, SLOT(tabsAt8()),
-         _resources->getAccelerator( ACCEL_TABS_AT_8 )
+         "Tabs at 8", _resources->getAccelerator( ACCEL_TABS_AT_8 ),
+         this, SLOT(tabsAt8())
       );
       _menuactions[ ID_TabsAtEight ]->setCheckable( true );
    }
 
    _displayMenu->addSeparator();
    _menuactions[ ID_ToggleLineNumbers ] = _displayMenu->addAction(
-      "Toggle line numbers", this, SLOT(toggleLineNumbers()),
-      _resources->getAccelerator( ACCEL_TOGGLE_LINE_NUMBERS )
+      "Toggle line numbers", _resources->getAccelerator( ACCEL_TOGGLE_LINE_NUMBERS ),
+      this, SLOT(toggleLineNumbers())
    );
    _menuactions[ ID_ToggleLineNumbers ]->setCheckable( true );
 
@@ -1959,26 +1967,26 @@ void XxApp::createMenus()
       _displayMenu->addSeparator();
 
       _menuactions[ ID_IgnoreFileNone ] = _displayMenu->addAction(
-         "No ignore", this, SLOT(ignoreFileNone()),
-         _resources->getAccelerator( ACCEL_IGNORE_FILE_NONE )
+         "No ignore", _resources->getAccelerator( ACCEL_IGNORE_FILE_NONE ),
+         this, SLOT(ignoreFileNone())
       );
       _menuactions[ ID_IgnoreFileNone ]->setCheckable( true );
 
       _menuactions[ ID_IgnoreFileLeft ] = _displayMenu->addAction(
-         "Ignore left file", this, SLOT(ignoreFileLeft()),
-         _resources->getAccelerator( ACCEL_IGNORE_FILE_LEFT )
+         "Ignore left file", _resources->getAccelerator( ACCEL_IGNORE_FILE_LEFT ),
+         this, SLOT(ignoreFileLeft())
       );
       _menuactions[ ID_IgnoreFileLeft ]->setCheckable( true );
 
       _menuactions[ ID_IgnoreFileMiddle ] = _displayMenu->addAction(
-         "Ignore middle file", this, SLOT(ignoreFileMiddle()),
-         _resources->getAccelerator( ACCEL_IGNORE_FILE_MIDDLE )
+         "Ignore middle file", _resources->getAccelerator( ACCEL_IGNORE_FILE_MIDDLE ),
+         this, SLOT(ignoreFileMiddle())
       );
       _menuactions[ ID_IgnoreFileMiddle ]->setCheckable( true );
 
       _menuactions[ ID_IgnoreFileRight ] = _displayMenu->addAction(
-         "Ignore right file", this, SLOT(ignoreFileRight()),
-         _resources->getAccelerator( ACCEL_IGNORE_FILE_RIGHT )
+         "Ignore right file", _resources->getAccelerator( ACCEL_IGNORE_FILE_RIGHT ),
+         this, SLOT(ignoreFileRight())
       );
       _menuactions[ ID_IgnoreFileRight ]->setCheckable( true );
    }
@@ -1989,35 +1997,35 @@ void XxApp::createMenus()
    _windowsMenu = menubar->addMenu( "W&indows" );
    if ( _filesAreDirectories == false ) {
       _menuactions[ ID_TogglePaneMergedView ] = _windowsMenu->addAction(
-         "Toggle pane merged view", this, SLOT(togglePaneMergedView()),
-         _resources->getAccelerator( ACCEL_TOGGLE_PANE_MERGED_VIEW )
+         "Toggle pane merged view", _resources->getAccelerator( ACCEL_TOGGLE_PANE_MERGED_VIEW ),
+         this, SLOT(togglePaneMergedView())
       );
       _menuactions[ ID_TogglePaneMergedView ]->setCheckable( true );
 
       _menuactions[ ID_TogglePopupMergedView ] = _windowsMenu->addAction(
-         "Toggle popup merged view", this, SLOT(togglePopupMergedView()),
-         _resources->getAccelerator( ACCEL_TOGGLE_POPUP_MERGED_VIEW )
+         "Toggle popup merged view", _resources->getAccelerator( ACCEL_TOGGLE_POPUP_MERGED_VIEW ),
+         this, SLOT(togglePopupMergedView())
       );
       _menuactions[ ID_TogglePopupMergedView ]->setCheckable( true );
 
       _windowsMenu->addSeparator();
    }
    _menuactions[ ID_ToggleToolbar ] = _windowsMenu->addAction(
-      "Toggle toolbar", this,
-      SLOT(toggleToolbar()),
-      _resources->getAccelerator( ACCEL_TOGGLE_TOOLBAR )
+      "Toggle toolbar",
+      _resources->getAccelerator( ACCEL_TOGGLE_TOOLBAR ),
+      this, SLOT(toggleToolbar())
    );
    _menuactions[ ID_ToggleToolbar ]->setCheckable( true );
 
    _menuactions[ ID_ToggleOverview ] = _windowsMenu->addAction(
-      "Toggle overview", this, SLOT(toggleOverview()),
-      _resources->getAccelerator( ACCEL_TOGGLE_OVERVIEW )
+      "Toggle overview", _resources->getAccelerator( ACCEL_TOGGLE_OVERVIEW ),
+      this, SLOT(toggleOverview())
    );
    _menuactions[ ID_ToggleOverview ]->setCheckable( true );
 
    _menuactions[ ID_ToggleShowFilenames ] = _windowsMenu->addAction(
-      "Toggle show filename", this, SLOT(toggleShowFilenames()),
-      _resources->getAccelerator( ACCEL_TOGGLE_SHOW_FILENAMES )
+      "Toggle show filename", _resources->getAccelerator( ACCEL_TOGGLE_SHOW_FILENAMES ),
+      this, SLOT(toggleShowFilenames())
    );
    _menuactions[ ID_ToggleShowFilenames ]->setCheckable( true );
 
@@ -2027,8 +2035,8 @@ void XxApp::createMenus()
    menubar->addSeparator();
    QkMenu* helpMenu = menubar->addMenu( "&Help" );
    helpMenu->addAction(
-      "User's manual...", this, SLOT(helpManPage()),
-      _resources->getAccelerator( ACCEL_HELP_MAN_PAGE )
+      "User's manual...", _resources->getAccelerator( ACCEL_HELP_MAN_PAGE ),
+      this, SLOT(helpManPage())
    );
 
    QAction * actOnContext = QWhatsThis::createAction();
@@ -2037,8 +2045,8 @@ void XxApp::createMenus()
 
    helpMenu->addSeparator();
    helpMenu->addAction(
-      "About...", this, SLOT(helpAbout()),
-      _resources->getAccelerator( ACCEL_HELP_ABOUT )
+      "About...", _resources->getAccelerator( ACCEL_HELP_ABOUT ),
+      this, SLOT(helpAbout())
    );
 }
 
