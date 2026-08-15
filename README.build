@@ -63,10 +63,24 @@ Notes
 Installation
 ------------
 
-::
+After building, install with::
 
-    su -
-    install xxdiff/src/xxdiff /usr/X11R6/bin
+    cd xxdiff/src
+    sudo make install
+
+By default this installs the ``xxdiff`` command to ``/usr/local/bin``. On
+macOS, it also copies ``xxdiff.app`` to ``/Applications`` and symlinks the
+command inside it into ``/usr/local/bin`` so it can be run from either the
+GUI or the terminal.
+
+Override the install locations with ``PREFIX`` (default ``/usr/local``) and,
+on macOS, ``APPDIR`` (default ``/Applications``)::
+
+    sudo make install PREFIX=$HOME/.local
+
+Uninstall with::
+
+    sudo make uninstall
 
 You can generate HTML documentation with ``xxdiff --help-html`` if you want.
 

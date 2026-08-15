@@ -66,3 +66,41 @@ all: Makefile
 
 Makefile: $(MAKEDIR)/xxdiff.pro
 	$(MAKE) -f $(MAKEDIR)/Makefile.bootstrap Makefile
+
+
+#
+# install / uninstall
+#
+
+OS := $(shell uname -s)
+
+PREFIX ?= /usr/local
+APPDIR ?= /Applications
+
+ifeq ($(OS),Darwin)
+install: install-macx
+uninstall: uninstall-macx
+else
+install: install-unix
+uninstall: uninstall-unix
+endif
+
+# On macOS, install the .app bundle to /Applications (for Finder/Spotlight/
+# Launchpad) and symlink the binary inside it into $(PREFIX)/bin so it can
+# also be run from the command line.
+install-macx:
+	rm -rf $(APPDIR)/xxdiff.app
+	cp -R $(MAKEDIR)/../bin/xxdiff.app $(APPDIR)/xxdiff.app
+	mkdir -p $(PREFIX)/bin
+	ln -sf $(APPDIR)/xxdiff.app/Contents/MacOS/xxdiff $(PREFIX)/bin/xxdiff
+
+uninstall-macx:
+	rm -f $(PREFIX)/bin/xxdiff
+	rm -rf $(APPDIR)/xxdiff.app
+
+install-unix:
+	mkdir -p $(PREFIX)/bin
+	cp $(MAKEDIR)/../bin/xxdiff $(PREFIX)/bin/xxdiff
+
+uninstall-unix:
+	rm -f $(PREFIX)/bin/xxdiff
